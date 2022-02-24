@@ -5,14 +5,18 @@ public class Assignment1Pt1 {
     public static final int MIN = 1;
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        int size = 0;
-        printOptions();
         String prompt = "Please enter your option: ";
-        int option = getInt(in, prompt);
+        int option = 0;
+        int size = 0;
+        
+        printOptions();
+        option = getInt(in, prompt);
+
         while(option < 0 && option > 6){
             System.out.println("Enter a number 0-6!");
             option = getInt(in, prompt);
         }
+        
         while(option != 0){
             switch(option){
                 case 0:
