@@ -8,12 +8,7 @@ public class Assignment1Pt2 {
             String prompt = "Enter the size of the square matrix(positive & odd): ";
             int size = getInt(in, prompt);
             while(size%2 == 0 || size < 0){
-                if(size%2 == 0 && size < 0)
-                    System.out.println("Enter a positve odd number!");
-                else if(size %2 == 0)
-                    System.out.println("Enter an odd number");
-                else
-                    System.out.println("Enter a positive number");
+                System.out.println("Enter a positve odd integer!");
                 size = getInt(in,prompt);
             }
             System.out.println("The square with size = " + size + " is: ");
@@ -21,20 +16,20 @@ public class Assignment1Pt2 {
             System.out.println("The " + size + " x " + size + "square adds up to " + add(ocdMatrix(size), size));
             
             System.out.println("Continue(Y/N)");
-            again = in.next().charAt(0);
-            again = again(again, in);
+            again = again(in);
         }while(again == 'Y' || again =='y');
     }
-
+    //get integer value from user
     public static int getInt(Scanner in, String prompt){
         System.out.print(prompt);
         while(!in.hasNextInt()){
             in.next();
-            System.out.print("Not an integer. Try again! ");
+            System.out.println("Not an integer. Try again! ");
             System.out.print(prompt);
         }
         return in.nextInt();
     }
+    //pring matrix
     public static void print(int[][] matrix, int size){
         for(int row = 0; row < size; row++){
             for(int col = 0; col < size; col++){
@@ -43,6 +38,7 @@ public class Assignment1Pt2 {
             System.out.println();
         }
     }
+    //populate matrix
     public static int[][] ocdMatrix(int size){
         int matrix[][] = new int[size][size];
         int num = 1;
@@ -72,18 +68,19 @@ public class Assignment1Pt2 {
         }
         return matrix;
     }
+    //get sum of digonal because sum diagonal = sum rows = sum cols
     public static int add(int[][] matrix, int size){
         int sum = 0;
-        int row = 0;
-        for(int col = 0; col < size; col++){
-            sum += matrix[row][col];
+        for(int row = 0; row < size; row++){
+            sum += matrix[row][row];
         }
-        
         return sum;
     }
-    public static char again(char input, Scanner in){
+    //get yes or no to continue from user
+    public static char again(Scanner in){
+        char input = in.next().charAt(0);
         while(input != 'Y' && input != 'N' && input != 'y' && input != 'n'){
-            System.out.println("(Y/y) = yes\n(N/n) = no");
+            System.out.println("Enter 'Y' for yes and 'N' for no");
             input = in.next().charAt(0);
         }
         return input;
