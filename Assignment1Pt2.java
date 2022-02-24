@@ -29,7 +29,7 @@ public class Assignment1Pt2 {
         }
         return in.nextInt();
     }
-    //pring matrix
+    //print matrix
     public static void print(int[][] matrix, int size){
         for(int row = 0; row < size; row++){
             for(int col = 0; col < size; col++){
