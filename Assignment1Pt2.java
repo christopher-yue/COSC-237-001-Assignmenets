@@ -42,28 +42,28 @@ public class Assignment1Pt2 {
     public static int[][] ocdMatrix(int size){
         int matrix[][] = new int[size][size];
         int num = 1;
-        int i = 0;
-        int j = size/2;
+        int row = 0;
+        int col = size/2;
         while(num != (size * size) + 1){
-            if(i < 0){
-                i = size - 1;
+            if(row < 0){
+                row = size - 1;
             }
-            if(j == size){
-                j = 0;
+            if(col == size){
+                col = 0;
             }
-            if(matrix[i][j] != 0){
-                if(i == (size - 1) && j == 0){
-                    i = size - (size - 1);
-                    j = size - 1;
+            if(matrix[row][col] != 0){
+                if(row == (size - 1) && col == 0){
+                    row = size - (size - 1);
+                    col = size - 1;
                 }
                 else{
-                    i+=2;
-                    j--;
+                    row+=2;
+                    col--;
                 }
             }
-            matrix[i][j] = num;
-            i--;
-            j++;
+            matrix[row][col] = num;
+            row--;
+            col++;
             num++;
         }
         return matrix;
