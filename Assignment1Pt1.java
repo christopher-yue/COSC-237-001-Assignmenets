@@ -5,22 +5,15 @@ public class Assignment1Pt1 {
     public static final int MIN = 1;
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        String prompt = "Please enter your option: ";
-        int option = 0;
         int size = 0;
-        
+        int num = 0;
         printOptions();
-        option = getInt(in, prompt);
-
-        while(option < 0 && option > 6){
-            System.out.println("Enter a number 0-6!");
-            option = getInt(in, prompt);
-        }
-        
+        String prompt = "Please enter your option: ";
+        int option = getInt(in, prompt);
         while(option != 0){
+            num++;
             switch(option){
                 case 0:
-                    System.out.println("is a 0");
                     break;
                 case 1:
                     prompt = "Enter the size of square matrices: ";
@@ -35,7 +28,6 @@ public class Assignment1Pt1 {
                     print(matrix2, size);
                     System.out.println("The resulting matrix is:");
                     print(add(matrix1, matrix2, size), size);
-                    System.out.printf("%50s", "Command 1 completed.");
                     break;
                 case 2:
                     prompt = "Enter the size of square matrices: ";
@@ -50,7 +42,6 @@ public class Assignment1Pt1 {
                     print(matrix2, size);
                     System.out.println("The resulting matrix is:");
                     print(subtract(matrix1, matrix2, size), size);
-                    System.out.printf("%50s", "Command 2 completed.");
                     break;
                 case 3:
                     prompt = "Enter the size of square matrices: ";
@@ -65,7 +56,6 @@ public class Assignment1Pt1 {
                     print(matrix2, size);
                     System.out.println("The resulting matrix is:");
                     print(multiply(matrix1, matrix2, size), size);
-                    System.out.printf("%50s", "Command 3 completed.");
                     break;
                 case 4:
                     prompt = "Enter the size of the square matrix: ";
@@ -78,7 +68,6 @@ public class Assignment1Pt1 {
                     print(matrix1, size);
                     System.out.println("The original matrix multiplied by 4 is: ");
                     print(multiplyByConst(matrix1, multConst, size), size);
-                    System.out.printf("%50s", "Command 4 completed.");
                     break;
                 case 5:
                     prompt = "Enter the size of the square matrix: ";
@@ -89,7 +78,6 @@ public class Assignment1Pt1 {
                     print(matrix1, size);
                     System.out.println("The transposed matrix is:");
                     print(transpose(matrix1, size), size);
-                    System.out.printf("%50s", "Command 5 completed.");
                     break;
                 case 6:
                     prompt = "Enter the size of the square matrix: ";
@@ -99,9 +87,11 @@ public class Assignment1Pt1 {
                     System.out.println("The matrix is: ");
                     print(matrix1, size);
                     System.out.println("The trace for this matrix is: " + trace(matrix1, size));
-                    System.out.printf("%50s", "Command 6 completed.");
                     break;
+                default:
+                    System.out.println("Out of bounds!");
             }
+            System.out.printf("%50s%n", "Command " + num + " completed.");
             printOptions();
             option = getInt(in, prompt);
         }
