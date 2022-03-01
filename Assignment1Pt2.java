@@ -67,13 +67,12 @@ public class Assignment1Pt2 {
             num++;
         }
         return matrix;
-    }
+    } 
+
     //get sum of digonal because sum diagonal = sum rows = sum cols
     public static int add(int[][] matrix, int size){
         int sum = 0;
-        for(int row = 0; row < size; row++){
-            sum += matrix[row][row];
-        }
+        sum = size * ((size * size) + 1)/2;
         return sum;
     }
     //get yes or no to continue from user
