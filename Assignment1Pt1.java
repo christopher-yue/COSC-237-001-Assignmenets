@@ -93,6 +93,7 @@ public class Assignment1Pt1 {
             }
             System.out.printf("%50s%n", "Command " + num + " completed.");
             printOptions();
+            prompt = "Please enter your option: ";
             option = getInt(in, prompt);
         }
 
@@ -112,13 +113,13 @@ public class Assignment1Pt1 {
     public static void printOptions(){
         System.out.println("Your options are:");
         System.out.println("-----------------");
-        System.out.printf("%-10s1) Add 2 matrices%n", "");
-        System.out.printf("%-10s2) Subtract 2 matrices%n", "");
-        System.out.printf("%-10s3) Multiply 2 matrices%n", "");
-        System.out.printf("%-10s4) Multiply matrix by a constant%n", "");
-        System.out.printf("%-10s5) Transpose matrix%n", "");
-        System.out.printf("%-10s6) Matrix trace%n", "");
-        System.out.printf("%-10s0) EXIT%n", "");
+        System.out.printf(" %20s%n", "1) Add 2 matrices");
+        System.out.printf(" %25s%n", "2) Subtract 2 matrices");
+        System.out.printf(" %25s%n", "3) Multiply 2 matrices");
+        System.out.printf(" %35s%n", "4) Multiply matrix by a constant");
+        System.out.printf(" %22s%n", "5) Transpose matrix");
+        System.out.printf(" %18s%n", "6) Matrix trace");
+        System.out.printf(" %10s%n", "0) EXIT");
     }
     //print matrix
     public static void print(int[][] matrix, int size){
