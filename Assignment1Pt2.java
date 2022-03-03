@@ -3,22 +3,25 @@ import java.util.*;
 public class Assignment1Pt2 {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        char again = ' ';
+        char again;
+        int size;
+        String prompt;
         do{
-            String prompt = "Enter the size of the square matrix(positive & odd): ";
-            int size = getInt(in, prompt);
+            prompt = "Enter the size of the square matrix(positive & odd): ";
+            size = getInt(in, prompt);
             while(size%2 == 0 || size < 0){
                 System.out.println("Enter a positve odd integer!");
                 size = getInt(in,prompt);
             }
             System.out.println("The square with size = " + size + " is: ");
-            print(ocdMatrix(size), size);
-            System.out.println("The " + size + " x " + size + "square adds up to " + add(ocdMatrix(size), size));
+            print(countingMatrix(size), size);
+            System.out.println("The " + size + " x " + size + " square adds up to " + add(countingMatrix(size), size));
             
             System.out.println("Continue(Y/N)");
-            again = again(in);
+            again = getAgain(in);
         }while(again == 'Y' || again =='y');
     }
+
     //get integer value from user
     public static int getInt(Scanner in, String prompt){
         System.out.print(prompt);
@@ -29,6 +32,7 @@ public class Assignment1Pt2 {
         }
         return in.nextInt();
     }
+
     //print matrix
     public static void print(int[][] matrix, int size){
         for(int row = 0; row < size; row++){
@@ -38,8 +42,9 @@ public class Assignment1Pt2 {
             System.out.println();
         }
     }
+
     //populate matrix
-    public static int[][] ocdMatrix(int size){
+    public static int[][] countingMatrix(int size){
         int matrix[][] = new int[size][size];
         int num = 1;
         int row = 0;
@@ -75,8 +80,9 @@ public class Assignment1Pt2 {
         sum = size * ((size * size) + 1)/2;
         return sum;
     }
+
     //get yes or no to continue from user
-    public static char again(Scanner in){
+    public static char getAgain(Scanner in){
         char input = in.next().charAt(0);
         while(input != 'Y' && input != 'N' && input != 'y' && input != 'n'){
             System.out.println("Enter 'Y' for yes and 'N' for no");
