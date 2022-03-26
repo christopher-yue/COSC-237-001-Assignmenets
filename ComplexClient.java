@@ -65,6 +65,7 @@ public class ComplexClient {
                     break;
                 default:
                     System.out.println("Enter an option from 0-6");
+                    break;
             }
             System.out.printf("%30s%n%n", "Command number " + num + " completed.");
             menu();
