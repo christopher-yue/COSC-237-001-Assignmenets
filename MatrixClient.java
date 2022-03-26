@@ -114,6 +114,9 @@ public class MatrixClient {
                     else
                         System.out.println("The matrices are NOT equal!!");
                     break;
+                default:
+                    System.out.println("Enter an option from 0-8");
+                    break;
             }
             System.out.printf("%30s%n%n", "Command number " + numCommands + " completed.");
             menu();
