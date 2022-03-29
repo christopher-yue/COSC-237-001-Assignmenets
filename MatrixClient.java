@@ -31,6 +31,7 @@ public class MatrixClient {
             switch(choice){
                 case 0:
                     break;
+                //add matrices
                 case 1:
                     first.init(LOW, UP);
                     second.init(LOW, UP);
@@ -42,6 +43,7 @@ public class MatrixClient {
                     System.out.println("The resulting matrix is:");
                     result.print();
                     break;
+                //subtract matrices
                 case 2:
                     first.init(LOW, UP);
                     second.init(LOW, UP);
@@ -53,6 +55,7 @@ public class MatrixClient {
                     System.out.println("The resulting matrix is:");
                     result.print();
                     break;
+                //multiply matrices
                 case 3:
                     first.init(LOW, UP);
                     second.init(LOW, UP);
@@ -64,6 +67,7 @@ public class MatrixClient {
                     System.out.println("The resulting matrix is:");
                     result.print();
                     break;
+                //multiply matrix by constant
                 case 4:
                     prompt = "Enter the multiplication constant: ";
                     value = getInt(input, prompt);
@@ -74,6 +78,7 @@ public class MatrixClient {
                     System.out.println("The resulting matrix is:");
                     result.print();
                     break;
+                //transpose matrix
                 case 5:
                     first.init(LOW, UP);
                     System.out.println("The original matrix is:");
@@ -82,6 +87,7 @@ public class MatrixClient {
                     System.out.println("The resulting matrix is:");
                     result.print();
                     break;
+                //trace matrix
                 case 6:
                     first.init(LOW, UP);
                     System.out.println("The original matrix is:");
@@ -89,6 +95,7 @@ public class MatrixClient {
                     tr = first.trace();
                     System.out.println("The trace for this matrix is: " + tr);
                     break;
+                //copy matrix
                 case 7:
                     first.init(LOW, UP);
                     System.out.println("The original matrix is:");
@@ -99,9 +106,8 @@ public class MatrixClient {
                     System.out.println("Testing for equality. Should be equal!!");
                     if(first.equals(result))
                         System.out.println("The matrices are equal!!");
-                    else
-                        System.out.println("Your program is a failure");//remove this later?
                     break;
+                //check equality of matrices
                 case 8:
                     first.init(LOW, UP);
                     second.init(LOW, UP);
