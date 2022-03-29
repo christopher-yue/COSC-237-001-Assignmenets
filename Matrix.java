@@ -5,7 +5,6 @@ public class Matrix {
     public final int MAX = 20;
     private int size;
     private int[][] table = new int[MAX][MAX];
-
     //default constructor
     public Matrix() {
         size = 0;
@@ -13,15 +12,6 @@ public class Matrix {
     //alt constructor
     public Matrix(int s) {
         size = s;
-    }
-    //alt constructor
-    public Matrix(Matrix a){
-        size = a.size;
-        for(int row = 0; row < size; row++){
-            for(int col = 0; col < size; col++){
-                table[row][col] = a.table[row][col];
-            }
-        }
     }
     //get the size of the matrix
     public int getSize() {
@@ -63,7 +53,7 @@ public class Matrix {
         }
         return sum;
     }
-     //return difference of 2 matrices
+    //return difference of 2 matrices
     public Matrix subtract(Matrix a) {
         Matrix difference = new Matrix(size);
         if(size == a.size){
