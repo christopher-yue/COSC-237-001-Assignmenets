@@ -13,7 +13,7 @@ public class Complex {
         real = r;
         imaginary = i;
     }
-    //get user input, convert it to string, create scanner with string as paramater, read the scanner for valid input, assing values to real and imaginary
+    //read user input
     public void read(Scanner in, String prompt){
         double num;
         int count = 0;
