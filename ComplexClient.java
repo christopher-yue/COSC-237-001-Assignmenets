@@ -1,93 +1,151 @@
 import java.util.Scanner;
-public class ComplexClient {
+
+public class MatrixClient {
+    public static final int MAX = 20;
+    public static final int LOW = 1;
+    public static final int UP = 10;
     public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        Scanner cnum = new Scanner(System.in);
-        Complex c1 = new Complex();
-        Complex c2 = new Complex();
+        Scanner input = new Scanner(System.in);
+        int numCommands = 0;
+        int size;
+        int value;
+        int tr;
         int choice;
-        int num = 0;
-        String prompt;
+        String prompt = "Enter the size of the square matrix: ";
+
+        size = getInt(input, prompt);
+        while(size < 0 || size > 20){
+            System.out.println("INPUT ERROR!!! Invalid size. Positive and <= 20.");
+            size = getInt(input, prompt);
+        }
+
+        Matrix first = new Matrix(size);
+        Matrix second = new Matrix(size);
+        Matrix result = new Matrix(size);
 
         menu();
-        prompt = "Please enter your option: ";
-        choice = getInt(in, prompt);
-
+        prompt = "Please enter your option:";
+        choice = getInt(input, prompt);
         while(choice != 0){
-            num++;
-            prompt = "Enter a complex number(real imaginary)";
-
+            numCommands++;
             switch(choice){
                 case 0:
                     break;
+                //add matrices
                 case 1:
-                    c1.read(cnum, prompt);
-                    c2.read(cnum,prompt);
-                    System.out.println("c1 = " + c1.toString());
-                    System.out.println("c2 = " + c2.toString());
-                    System.out.println("Result: " + c1.toString() + " + " + c2.toString() + " = " + c1.add(c2).toString());
+                    first.init(LOW, UP);
+                    second.init(LOW, UP);
+                    System.out.println("First matrix is:");
+                    first.print();
+                    System.out.println("Second matrix is:");
+                    second.print();
+                    result = first.add(second);
+                    System.out.println("The resulting matrix is:");
+                    result.print();
                     break;
+                //subtract matrices
                 case 2:
-                    c1.read(cnum, prompt);
-                    c2.read(cnum,prompt);
-                    System.out.println("First complex number is " + c1.toString());
-                    System.out.println("Second complex number is " + c2.toString());
-                    System.out.println("Result: " + c1.toString() + " - " + c2.toString() + " = " + c1.subtract(c2).toString());
+                    first.init(LOW, UP);
+                    second.init(LOW, UP);
+                    System.out.println("First matrix is:");
+                    first.print();
+                    System.out.println("Second matrix is:");
+                    second.print();
+                    result = first.subtract(second);
+                    System.out.println("The resulting matrix is:");
+                    result.print();
                     break;
+                //multiply matrices
                 case 3:
-                    c1.read(cnum, prompt);
-                    c2.read(cnum,prompt);
-                    System.out.println("First complex number is " + c1.toString());
-                    System.out.println("Second complex number is " + c2.toString());
-                    System.out.println("Result: " + c1.toString() + " * " + c2.toString() + " = " + c1.multiply(c2).toString());
+                    first.init(LOW, UP);
+                    second.init(LOW, UP);
+                    System.out.println("First matrix is:");
+                    first.print();
+                    System.out.println("Second matrix is:");
+                    second.print();
+                    result = first.multiply(second);
+                    System.out.println("The resulting matrix is:");
+                    result.print();
                     break;
+                //multiply matrix by constant
                 case 4:
-                    c1.read(cnum, prompt);
-                    c2.read(cnum,prompt);
-                    System.out.println("First complex number is " + c1.toString());
-                    System.out.println("Second complex number is " + c2.toString());
-                    System.out.println("Result: " + c1.toString() + " / " + c2.toString() + " = " + c1.divide(c2).toString());
+                    prompt = "Enter the multiplication constant: ";
+                    value = getInt(input, prompt);
+                    first.init(LOW, UP);
+                    System.out.println("The original matrix is:");
+                    first.print();
+                    result = first.multiplyConst(value);
+                    System.out.println("The resulting matrix is:");
+                    result.print();
                     break;
+                //transpose matrix
                 case 5:
-                    c1.read(cnum, prompt);
-                    System.out.println("The complex number is " + c1.toString());
-                    System.out.println("Result: |" + c1.toString() + "| = " + c1.cAbs());
+                    first.init(LOW, UP);
+                    System.out.println("The original matrix is:");
+                    first.print();
+                    result = first.transpose();
+                    System.out.println("The resulting matrix is:");
+                    result.print();
                     break;
+                //trace matrix
                 case 6:
-                    c1.read(cnum, prompt);
-                    c2.read(cnum,prompt);
-                    System.out.println("First complex number is " + c1.toString());
-                    System.out.println("Second complex number is " + c2.toString());
-                    if(c1.equals(c2))
-                        System.out.println("The complex numbers are equal");
+                    first.init(LOW, UP);
+                    System.out.println("The original matrix is:");
+                    first.print();
+                    tr = first.trace();
+                    System.out.println("The trace for this matrix is: " + tr);
+                    break;
+                //copy matrix
+                case 7:
+                    first.init(LOW, UP);
+                    System.out.println("The original matrix is:");
+                    first.print();
+                    result.copy(first);
+                    System.out.println("The copy of this matrix is:");
+                    result.print();
+                    System.out.println("Testing for equality. Should be equal!!");
+                    if(first.equals(result))
+                        System.out.println("The matrices are equal!!");
+                    break;
+                //check equality of matrices
+                case 8:
+                    first.init(LOW, UP);
+                    second.init(LOW, UP);
+                    System.out.println("First matrix is:");
+                    first.print();
+                    System.out.println("Second matrix is:");
+                    second.print();
+                    if(first.equals(second))
+                        System.out.println("The matrices are equal!!");
                     else
-                        System.out.println("The complex numbers are NOT equal");
+                        System.out.println("The matrices are NOT equal!!");
                     break;
                 default:
-                    System.out.println("Enter an option from 0-6");
+                    System.out.println("Enter an option from 0-8");
                     break;
             }
-            System.out.printf("%30s%n%n", "Command number " + num + " completed.");
+            System.out.printf("%30s%n%n", "Command number " + numCommands + " completed.");
             menu();
-            prompt = "Please enter your option: ";
-            choice = getInt(in, prompt);
+            prompt = "Please enter your option:";
+            choice = getInt(input, prompt);
         }
-        in.close();
+        input.close();
         System.out.printf("%20s","Testing completed");
     }
-    //print menu
     public static void menu(){
-        System.out.printf("%s%n", "Your options for Complex arithmetic are:");
-        System.out.printf("%s%n", "----------------------------------------");
-        System.out.printf("%s%n", "1) Add 2 complex numbers");
-        System.out.printf("%s%n", "2) Subtract 2 complex numbers");
-        System.out.printf("%s%n", "3) Multiply 2 complex numbers");
-        System.out.printf("%s%n", "4) Divide 2 complex numbers");
-        System.out.printf("%s%n", "5) Absolute value of a complex number");
-        System.out.printf("%s%n", "6) Compare 2 complex numbers");
+        System.out.printf("%s%n", "Your options are:");
+        System.out.printf("%s%n", "-----------------");
+        System.out.printf("%s%n", "1) Add 2 matrices");
+        System.out.printf("%s%n", "2) Subtract 2 matrices");
+        System.out.printf("%s%n", "3) Multiply 2 matrices");
+        System.out.printf("%s%n", "4) Multiply matrix by a constant");
+        System.out.printf("%s%n", "5) Transpose matrix");
+        System.out.printf("%s%n", "6) Matrix trace");
+        System.out.printf("%s%n", "7) Make a copy");
+        System.out.printf("%s%n", "8) Test for equality");
         System.out.printf("%s%n", "0) EXIT");
     }
-    //get integer value from user
+
     public static int getInt(Scanner in, String prompt){
         System.out.print(prompt);
         while(!in.hasNextInt()){
@@ -98,4 +156,4 @@ public class ComplexClient {
         }
         return in.nextInt();
     }
-}
+ }
