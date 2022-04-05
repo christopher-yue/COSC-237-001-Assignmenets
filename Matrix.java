@@ -81,12 +81,15 @@ public class Matrix {
     }
     //check if matrices are equal
     public boolean equals(Matrix a){
-        for(int row = 0; row < size; row++){
-            for(int col = 0; col < size; col++){
-                if(table[row][col] != a.table[row][col])
-                    return false;
+        if(size != a.size)
+            return false;
+        else{
+            for(int row = 0; row < size; row++){
+                for(int col = 0; col < size; col++){
+                    if(table[row][col] != a.table[row][col])
+                        return false;
+                }
             }
-        }
         return true;
     }
     //return product of matrix multiplied by constant
@@ -133,6 +136,7 @@ public class Matrix {
                 table[row][col] = a.table[row][col];
             }
         }
+        size = a.size;
     }
     //get copy of matrix
     public Matrix getCopy(){
