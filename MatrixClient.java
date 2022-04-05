@@ -14,8 +14,8 @@ public class MatrixClient {
         String prompt = "Enter the size of the square matrix: ";
 
         size = getInt(input, prompt);
-        while(size < 0 || size > 20){
-            System.out.println("INPUT ERROR!!! Invalid size. Positive and <= 20.");
+        while(size < 0 || size > MAX){
+            System.out.println("INPUT ERROR!!! Invalid size. Positive and <= " + MAX);
             size = getInt(input, prompt);
         }
 
