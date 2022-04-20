@@ -111,13 +111,3 @@ public class UnorderedLinkedListInt extends LinkedListIntClass {
         }
     }
 }
-/*
-    public void print()  {
-        LinkedListNode current; //variable to traverse the list
-        current = first;
-        while (current != null) {//while more data to print
-            System.out.print(current.info + " ");
-            current = current.link;
-        }
-    }
-*/
