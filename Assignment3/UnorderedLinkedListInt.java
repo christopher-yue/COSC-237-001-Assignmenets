@@ -103,13 +103,15 @@ public class UnorderedLinkedListInt extends LinkedListIntClass {
         LinkedListNode current = first;
         list1.first = null;
         list2.first = null;
-        while(current.info <= key){
-            list1.insertLast(current.info);
-            current = current.link;
-        }
         while(current != null){
-            list2.insertLast(current.info);
-            current = current.link;
+            if(current.info <= key){
+                list1.insertLast(current.info);
+                current = current.link;
+            }
+            else{
+                list2.insertLast(current.info);
+                current = current.link;
+            }
         }
     }
 }
