@@ -85,29 +85,31 @@ public class UnorderedLinkedListInt extends LinkedListIntClass {
     //under construction
     public UnorderedLinkedListInt merge2(UnorderedLinkedListInt otherList){
         UnorderedLinkedListInt result = new UnorderedLinkedListInt();
+        LinkedListNode current = first;
         result.count = count + otherList.count;
-        while(first != null){
-            result.insertLast(first.info);
-            first = first.link;
+        while(current != null){
+            result.insertLast(current.info);
+            current = current.link;
         }
-        while(otherList.first != null){
-            result.insertLast(otherList.first.info);
-            otherList.first = otherList.first.link;
+        current = otherList.first;
+        while(current != null){
+            result.insertLast(current.info);
+            current = current.link;
         }
-        
         return result;
     }
     //under construction
     public void split(UnorderedLinkedListInt list1, UnorderedLinkedListInt list2, int key){
+        LinkedListNode current = first;
         list1.first = null;
         list2.first = null;
-        while(first.info <= key){
-            list1.insertLast(first.info);
-            first = first.link;
+        while(current.info <= key){
+            list1.insertLast(current.info);
+            current = current.link;
         }
-        while(first != null){
-            list2.insertLast(first.info);
-            first = first.link;
+        while(current != null){
+            list2.insertLast(current.info);
+            current = current.link;
         }
     }
 }
