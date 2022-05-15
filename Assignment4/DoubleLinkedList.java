@@ -238,7 +238,12 @@ public class DoubleLinkedList<T> implements DoubleLinkedListADT<T>{
 
     //creates a copy of a double linked list
     public void copy(DoubleLinkedList<T> otherList) {
-        first = otherList.first;
+        first = null;
+        DoubleLinkedListNode<T> current = otherList.first;
+        while(current != null){
+            insertLast(current.info);
+            current = current.next;
+        }
     }
 
     //creates a copy of a double linked list in reverse order
